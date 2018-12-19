@@ -1,1 +1,1 @@
-worker: python disc.py
+worker: python Disc.py
