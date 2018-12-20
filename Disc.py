@@ -42,7 +42,7 @@ async def on_message(message):
             await client.send_file(message.channel, f)
 
 
-    if message.content.starswith('!rev') or message.content.startswith('!reverse'):
+    if message.content.startswith('!rev') or message.content.startswith('!reverse'):
         channel = message.channel
         async for message in client.logs_from(channel, limit=1):
             messages = (message)
