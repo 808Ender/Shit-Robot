@@ -47,7 +47,7 @@ async def on_message(message):
         async for message in client.logs_from(channel, limit=1):
             messages = (message)
         await client.delete_message(messages)
-        with open('', 'rb') as f:
+        with open('rev.png', 'rb') as f:
             await client.send_file(message.channel, f)
 
 
