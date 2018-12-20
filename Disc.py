@@ -1,5 +1,6 @@
 import discord
 from discord.ext import commands
+import time
 client = discord.Client()
 commandz = commands.Bot(command_prefix = '!')
 @client.event
@@ -7,13 +8,13 @@ async def on_message(message):
     # we do not want the bot to reply to itself
     if message.author == client.user:
         return
+
+
     if message.content.startswith('!hello'):
-        channel = message.channel
-        async for message in client.logs_from(channel, limit=1):
-            messages = (message)
-        await client.delete_message(messages)
         msg = 'I hate you {0.author.mention}'.format(message)
         await client.send_message(message.channel, msg)
+
+
     if message.content.startswith('!shortkys'):
         with open('short.gif', 'rb') as f:
             channel = message.channel
@@ -21,6 +22,8 @@ async def on_message(message):
                 messages = (message)
             await client.delete_message(messages)
             await client.send_file(message.channel, f)
+
+
     if message.content.startswith('!longkys'):
         channel = message.channel
         async for message in client.logs_from(channel, limit=1):
@@ -28,6 +31,8 @@ async def on_message(message):
         await client.delete_message(messages)
         with open('long.gif', 'rb') as f:
             await client.send_file(message.channel, f)
+
+
     if message.content.startswith('!kys') or message.content.startswith('!kermitcide'):
         channel = message.channel
         async for message in client.logs_from(channel, limit=1):
@@ -35,6 +40,28 @@ async def on_message(message):
         await client.delete_message(messages)
         with open('truekys.gif','rb') as f:
             await client.send_file(message.channel, f)
+
+
+    if message.content.starswith('!rev') or message.content.startswith('!reverse'):
+        channel = message.channel
+        async for message in client.logs_from(channel, limit=1):
+            messages = (message)
+        await client.delete_message(messages)
+        with open('', 'rb') as f:
+            await client.send_file(message.channel, f)
+
+
+    if message.content.startswith('!spam') or message.content.startswith('!s'):
+        channel = message.channel
+        async for message in client.logs_from(channel, limit=1):
+            messages = (message)
+        await client.delete_message(messages)
+        for x in range(0,100):
+            with open('truekys.gif', 'rb') as f:
+                await client.send_file(message.channel, f)
+            time.sleep(0.75)
+        x = 0
+
 
 
 
@@ -48,4 +75,4 @@ async def on_ready():
     print(client.user.id)
     print('------')
 
-client.run('NTI0Mzc4Nzc5OTEzNjgyOTU0.DvuOHQ.A87HvGhelbQLo_KzlTbA0RUlDTQ')
+client.run('NTI0NjQ5MTc3MjI1ODg3NzY0.DvuF6g.H0ypf7HwpY5qhh-Es_gXN1lSXW0')
