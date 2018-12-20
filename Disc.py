@@ -59,7 +59,7 @@ async def on_message(message):
         for x in range(0,100):
             with open('truekys.gif', 'rb') as f:
                 await client.send_file(message.channel, f)
-            time.sleep(0.75)
+            time.sleep(0.5)
         x = 0
 
 
