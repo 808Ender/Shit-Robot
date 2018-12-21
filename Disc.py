@@ -1,14 +1,21 @@
 import discord
+import asyncio
 from discord.ext import commands
 import time
 client = discord.Client()
-commandz = commands.Bot(command_prefix = '!')
+comand = commands.Bot(command_prefix='!')
+
+
+@client.event
+async def on_message(message):
+    print(str(message.author)+" Said:"+str(message.content))
+    
+    
 @client.event
 async def on_message(message):
     # we do not want the bot to reply to itself
     if message.author == client.user:
         return
-
 
     if message.content.startswith('!hello'):
         msg = 'I hate you {0.author.mention}'.format(message)
@@ -51,19 +58,18 @@ async def on_message(message):
             await client.send_file(message.channel, f)
 
 
-    if message.content.startswith('!spam') or message.content.startswith('!s'):
-        channel = message.channel
-        async for message in client.logs_from(channel, limit=1):
-            messages = (message)
-        await client.delete_message(messages)
-        for x in range(0,100):
-            with open('truekys.gif', 'rb') as f:
-                await client.send_file(message.channel, f)
-            time.sleep(0.5)
-        x = 0
 
-
-
+@client.command(pass_context = True)
+async def spam(ctx, amount = 10):
+    channel = ctx.message.channel
+    async for message in client.logs_from(channel, limit=1):
+        messages = (message)
+    await client.delete_message(messages)
+    for x in range(0, int(amount)):
+        with open('truekys.gif', 'rb') as f:
+            await client.send_file(message.channel, f)
+        await asyncio.sleep(0.5)
+    x = 0
 
 
 
@@ -75,4 +81,4 @@ async def on_ready():
     print(client.user.id)
     print('------')
 
-client.run('NTI0Mzc4Nzc5OTEzNjgyOTU0.Dv2Q9Q.7YnNF35O02N6-RwmxgqLhIYza5E')
+client.run('NTI0NjQ5MTc3MjI1ODg3NzY0.DvuF6g.H0ypf7HwpY5qhh-Es_gXN1lSXW0')
