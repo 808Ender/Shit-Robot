@@ -59,7 +59,7 @@ async def on_message(message):
 
 
 
-@client.command(pass_context = True)
+@comand.command(pass_context = True)
 async def spam(ctx, amount = 10):
     channel = ctx.message.channel
     async for message in client.logs_from(channel, limit=1):
