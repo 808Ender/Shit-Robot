@@ -56,7 +56,17 @@ async def on_message(message):
         await client.delete_message(messages)
         with open('rev.png', 'rb') as f:
             await client.send_file(message.channel, f)
-
+     
+    if message.content.startswith('!T') or message.content.startswith('!TGAY') or if message.content.startswith('t'):
+        channel = message.channel
+        async for message in client.logs_from(channel, limit=1):
+            messages = (message)
+        await client.delete_message(messages)
+        with open('gay.jpg', 'rb') as f:
+            for x in range(0,10):
+                await client.send_file(message.channel, f)
+                time.sleep(0.5)
+            x = 0
 
 
 @comand.command(pass_context = True)
