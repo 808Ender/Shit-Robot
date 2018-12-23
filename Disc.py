@@ -57,7 +57,7 @@ async def on_message(message):
         with open('rev.png', 'rb') as f:
             await client.send_file(message.channel, f)
      
-    if message.content.startswith('!T') or message.content.startswith('!TGAY') or if message.content.startswith('t'):
+    if message.content.startswith('!T') or message.content.startswith('!TGAY') or message.content.startswith('t'):
         channel = message.channel
         async for message in client.logs_from(channel, limit=1):
             messages = (message)
